@@ -55,6 +55,38 @@ public class Main {
                 System.out.println(e.getMessage());
             }
         }
+        // Ingreso y validación de base y altura del triángulo
+        while (true) {
+            try {
+                System.out.print("Ingrese la base del triángulo (1 - 1000): ");
+                base = scanner.nextInt();
+
+                if (base <= 0) {
+                    throw new IllegalArgumentException("La base debe ser un número positivo.");
+                } else if (base > 1000) {
+                    throw new IllegalArgumentException("La base no debe ser mayor a 1000.");
+                }
+
+                System.out.print("Ingrese la altura del triángulo (1 - 1000): ");
+                altura = scanner.nextInt();
+
+                if (altura <= 0) {
+                    throw new IllegalArgumentException("La altura debe ser un número positivo.");
+                } else if (altura > 1000) {
+                    throw new IllegalArgumentException("La altura no debe ser mayor a 1000.");
+                }
+
+                break; // Si todo está bien, salir del ciclo
+
+            } catch (InputMismatchException e) {
+                System.out.println("Error: No se permiten letras ni símbolos. Ingrese solo números enteros positivos.");
+                scanner.nextLine(); // Limpiar el buffer
+            } catch (IllegalArgumentException e) {
+                System.out.println("Error: " + e.getMessage());
+                scanner.nextLine(); // Limpiar el buffer por si acaso
+            }
+        }
+
 
         CirculoDibujable circulo = new CirculoDibujable(radio, 50, 150);
         CuadradoDibujable cuadrado = new CuadradoDibujable(lado, 200, 150);
